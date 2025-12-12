@@ -21,5 +21,51 @@ elements.forEach(element => {
     });
 });
 
+const textsColors = document.querySelectorAll('.book__control_color .color');
+textsColors.forEach(textColor => {
+    textColor.addEventListener('click', function(event) {
+        event.preventDefault();
 
+        const activeColor = document.querySelector('.book__control_color .color_active');
+        if (activeColor !== this) {
+            activeColor.classList.remove('color_active'); 
+        }
 
+        this.classList.add('color_active'); 
+        book.classList.remove('book_color-black', 'book_color-gray', 'book_color-whitesmoke');
+
+        const color = this.dataset.textColor;
+
+        if (color === 'black') {
+            book.classList.add('book_color-black');
+        } else if (color === 'gray') {
+            book.classList.add('book_color-gray');
+        } else if (color === 'whitesmoke') {
+            book.classList.add('book_color-whitesmoke');
+        }
+    });
+});
+
+const backgroundColors = document.querySelectorAll('.book__control_background .color');
+backgroundColors.forEach(backgroundColor => {
+    backgroundColor.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const activeColor = document.querySelector('.book__control_background .color_active');
+        if (activeColor !== this) {
+            activeColor.classList.remove('color_active'); 
+        }
+
+        this.classList.add('color_active');
+        book.classList.remove('book_bg-gray', 'book_bg-black', 'book_bg-white');
+
+        const color = this.dataset.bgColor;
+        if (color === 'black') {
+            book.classList.add('book_bg-black');
+        } else if (color === 'gray') {
+            book.classList.add('book_bg-gray');
+        } else if (color === 'white') {
+            book.classList.add('book_bg-white');
+        }
+    });
+});
